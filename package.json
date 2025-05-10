@@ -1,0 +1,14 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "Repositório para os código de automação de testes com CypressJS e Cucumber (BDD) para a turma P5B - QA202516.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nós",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.3.3"
+  }
+}
