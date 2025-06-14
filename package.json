@@ -9,6 +9,7 @@
   "author": "Nós",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
     "cypress": "^14.3.3",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
@@ -16,5 +17,4 @@
     "nonGlobalStepDefinitions": false,
     "step_definitions": "cypress/e2e/steps"
   }
-  
 }

@@ -2,7 +2,7 @@
 import { Given, When, Then, And } from "cypress-cucumber-preprocessor/steps";
 
 Given("eu acesso a página de solicitação de crédito", () => {
-    cy.visit('https://angelofdiasg.tech/qaprogramador/sacfunc/')
+    cy.visit('/')
 })
 
 When("eu preencho todos os campos obrigatórios com dados válidos", () => {
@@ -18,7 +18,9 @@ And("eu clico em Solicitar Crédito", () => {
 })
 
 And("alterar o valor da renda para 3000", () => {
-    cy.get('#renda').clear().type('3000')
+    cy.fixture('solicitacaoCredito').then((dados) => {
+        cy.get('#renda').clear().type(dados.usuarioAprovado.renda)
+    })
 })
 
 And("alterar o valor da renda para 1000", () => {
@@ -44,3 +46,22 @@ Then("o sistema irá informar que a solicitação foi REPROVADA", () => {
 Then("o sistema irá informar que a solicitação foi {string}", (status) => {
     cy.get('#result').should('be.visible').should('contain', status)
 })
+
+// ESTE É O NOVO STEP DEFINITION QUE USA FAKER
+When(
+  "eu preencho o formulário com dados aleatórios de cliente e uma renda de {string} e um crédito de {string}",
+  (renda, credito) => {
+    // 1. Chamamos a task 'generateUser' que definimos no cypress.config.js
+    cy.task('generateUser').then((user) => {
+      // 2. O .then() nos dá acesso ao objeto 'user' retornado pela task
+      cy.log(`Usuário Gerado: ${user.nome} | ${user.email} | ${user.cpf}`);
+
+      // 3. Usamos os dados do objeto 'user' e os parâmetros do step para preencher o formulário
+      cy.get('#nome').type(user.nome);
+      cy.get('#email').type(user.email);
+      cy.get('#cpf').type(user.cpf);
+      cy.get('#renda').type(renda);
+      cy.get('#credito').type(credito);
+    });
+  }
+);

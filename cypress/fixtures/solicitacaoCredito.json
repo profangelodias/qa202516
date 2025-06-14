@@ -1,0 +1,18 @@
+{
+  "usuarioAprovado": {
+    "nome": "Anjo Aprovado",
+    "email": "a@a.com",
+    "cpf": "123.456.789-01",
+    "renda": "3000",
+    "credito": "1000",
+    "status": "APROVADA"
+  },
+  "usuarioReprovado": {
+    "nome": "Anjo Reprovado",
+    "email": "b@b.com",
+    "cpf": "987.654.321-09",
+    "renda": "1000",
+    "credito": "1000",
+    "status": "REPROVADA"
+  }
+}
